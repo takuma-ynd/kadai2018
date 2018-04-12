@@ -12,13 +12,9 @@ def doc_to_fv(file_name, shelve_file):
     return idx2freq
 
 
-def repr_fv(idx2freq):
-    return " ".join(":".join((str(idx), str(freq))) for idx, freq in sorted(idx2freq.items(), key=lambda x: x[0]))
-
-
 if __name__ == "__main__":
     assert len(sys.argv) == 2
     shelve_file = "word2idx.db"
     idx2freq = doc_to_fv(sys.argv[1], shelve_file)
-    fv = repr_fv(idx2freq)
+    fv = " ".join(":".join((str(idx), str(freq))) for idx, freq in sorted(idx2freq.items(), key=lambda x: x[0]))
     print(fv)
